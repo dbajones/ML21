@@ -45,6 +45,8 @@ Deliverable: Trained TensorFlow model
 
 July: Regional analysis. Extend to other regions.
 
-August: Make opensource freindly, documentation and presentation
+August: Make reproducible, open source friendly, documentation and presentation
 
-## More specifics
+## More specifics on how we're using the data
+
+1. 
