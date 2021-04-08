@@ -11,14 +11,16 @@ Simple bias-correcting methods assume that the bias is constant across time. Add
 
 In order to improve bias-correction, we propose a 2 stage transfer learning approach using a Recurrent U-Net Deep Learning model, which will be able to capture the time-varying behavior of the model and then the bias.
 
- We would conduct the study initially on a specific region (e.g. Europe) which would serve as a proof of concept. This model would then be trained on different regions.
+ We would conduct the study initially on a specific region (e.g. Europe) which would serve as a proof of concept. This model would then be trained on different regions. We have a more observations over Europe and USA. *This model could then be used on sparser regions, East Asia, Austraia*
+
+![map](map.png)
 
 *A (conceptually simpler) one-dimensional approach would be to train the model to perform better at the station location, by penalizing it's error at the locations. However, this approach is limited due to the sparsity of station locations, and would fail to use the global nature of the CAMS model.*
 
 A two-stage approach allows us to work with the sparse observations and the global  model. The first stage model would be a black-box version of CAMS. Then we can use a second stage to train the model at the station locations. The bias-correction would then be the difference between these two stages. This would provide better insight of CAMS's performance in specific regions. 
 
 - **Consider the openAQ fragmentation process, especially in regard to the error, source type**
-  i.e. the source-type and  mobility
+  i.e. the source-type and  mobility, distinguish between reference-grade and low-cost sensor data
 
 The Recurrent U-Net model has already proved viable in predicting summertime MDA8 surface ozone concentrations in the US [cite Tailong's preprint on arxiv], using meteorogical fields from the ERA-interim reanalysis and monthly mean NOx emissions from the Community Emissions Data System (CEDS) inventory as predictors. *more information about Tailong's model.*
 
@@ -43,4 +45,6 @@ Deliverable: Trained TensorFlow model
 
 July: Regional analysis. Extend to other regions.
 
-August: Make opensource freindly, documentation and presentation.
+August: Make opensource freindly, documentation and presentation
+
+## More specifics
