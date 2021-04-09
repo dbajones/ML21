@@ -11,9 +11,10 @@ Simple bias-correcting methods assume that the bias is constant across time. Add
 
 In order to improve bias-correction, we propose a 2 stage transfer learning approach using a Recurrent U-Net Deep Learning model, which will be able to capture the time-varying behavior of the model and then the bias.
 
- We would conduct the study initially on a specific region (e.g. Europe) which would serve as a proof of concept. This model would then be trained on different regions. We have a more observations over Europe and USA. *This model could then be used on sparser regions, East Asia, Austraia*
+We would conduct the study initially on a specific region (USA) which would serve as a proof of concept, due to the availability of stationary reference-grade data on openAQ. We would be able to leverage past knowledge with previous studies conducted on this region. This model would then be able to be trained on different regions including Europe and China.
 
 ![map](map.png)
+*Figure above shows a map of station locations on openAQ*
 
 *A (conceptually simpler) one-dimensional approach would be to train the model to perform better at the station location, by penalizing it's error at the locations. However, this approach is limited due to the sparsity of station locations, and would fail to use the global nature of the CAMS model.*
 
@@ -26,10 +27,6 @@ The Recurrent U-Net model has already proved viable in predicting summertime MDA
 
 We would develop an modified version of this model which would be able to work well with the openAQ dataset
 
-How many station locations? (from openAQ)
-- NO2 1476 
-- O3 2661
-- PM2.5 20406
 
 Different amounts of training data and thus 3 different models for (same architecture) each species. Inclusion of all 3 gases could potentially increase/decrease  model performance. 
 
