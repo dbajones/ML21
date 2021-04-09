@@ -11,7 +11,13 @@ Simple bias-correcting methods assume that the bias is constant across time. Add
 
 In order to improve bias-correction, we propose a 2 stage transfer learning approach using a Recurrent U-Net Deep Learning model, which will be able to capture the time-varying behavior of the model and then the bias.
 
-We would conduct the study initially on a specific region (USA) which would serve as a proof of concept, due to the availability of stationary reference-grade data on openAQ. We would be able to leverage past knowledge with previous studies conducted on this region. This model would then be able to be trained on different regions including Europe and China.
+We would conduct the study initially on a specific region (USA) which would serve as a proof of concept, due to the availability of stationary reference-grade data on openAQ (all PM2.5, O3 and NO2). We would be able to leverage past knowledge with previous studies conducted on this region[1]. This model would then be able to be trained on different regions including Europe and China. The lower-quality data would require more rigorous treatment and a deeper study before inclusion.
+
+[Previous work of colleague on Github by Tailong He at University of Toronto](https://github.com/tailonghe/DLO3)
+
+Note current DL model is similar but not yet adapted to the task. We would develop a modified version of this model which would be able to work  with the CAMS + openAQ dataset. We would include as inputs all three species, and output predictions of those species for the year, including met fields from CAMS. I
+
+The Recurrent U-Net model has already proved viable in predicting summertime MDA8 surface ozone concentrations in the US, using meteorological fields from the ERA-interim reanalysis and monthly mean NOx emissions from the Community Emissions Data System (CEDS) inventory as predictors.
 
 ![map](map.png)
 *Figure above shows a map of station locations on openAQ*
@@ -20,30 +26,20 @@ We would conduct the study initially on a specific region (USA) which would serv
 
 A two-stage approach allows us to work with the sparse observations and the global  model. The first stage model would be a black-box version of CAMS. Then we can use a second stage to train the model at the station locations. The bias-correction would then be the difference between these two stages. This would provide better insight of CAMS's performance in specific regions. 
 
-- **Consider the openAQ fragmentation process, especially in regard to the error, source type**
-  i.e. the source-type and  mobility, distinguish between reference-grade and low-cost sensor data
+# Rough timeline
 
-The Recurrent U-Net model has already proved viable in predicting summertime MDA8 surface ozone concentrations in the US [cite Tailong's preprint on arxiv], using meteorogical fields from the ERA-interim reanalysis and monthly mean NOx emissions from the Community Emissions Data System (CEDS) inventory as predictors. *more information about Tailong's model.*
+May: Gather and preprocess openAQ + CAMs data, reducing data size. Probably the longest of the tasks. The goal is to create a single 4D tensor containing relevant data (or figure out how to efficiently read in data during training from local CAMS + openAQ dataset during training.  Use Xarray (and possibly Dask) to handle large amounts of data.
 
-We would develop an modified version of this model which would be able to work well with the openAQ dataset
+Deliverable: a cohesive dataset which is able to be easily fed into a Tensorflow deep learning model
 
+June: Modifying existing TensorFlow model architecture for stage one and second stage transfer learning. Train model on CAMS first, followed by training on openAQ. The first task should be simple, with the later being a bit more challenging. 
 
-Different amounts of training data and thus 3 different models for (same architecture) each species. Inclusion of all 3 gases could potentially increase/decrease  model performance. 
+Deliverable: Trained TensorFlow model which is able to correct bias over USA
 
-# Timeline
+July: Regional analysis. Further improve model performance
 
-May: Gather and preprocess openAQ data, reducing data size. Probably the longest of the tasks. The goal is to create a single 4D tensor containing relevant data (or figure out how to efficiently read in data during training from local CAMS + openAQ dataset). Use Xarray (and possibly Dask) to handle big data.
+Deliverable: Analysis + Results. Why is the model working well/not so well
 
-Deliverable: cohesive dataset
+August: Make reproducible, open source friendly, documentation and extendable to other regions
 
-Mid- June: Modifying existing TensorFlow model architecture for 2nd stage transfer learning
-
-Deliverable: Trained TensorFlow model
-
-July: Regional analysis. Extend to other regions.
-
-August: Make reproducible, open source friendly, documentation and presentation
-
-## More specifics on how we're using the data
-
-1. 
+Deliverable : Well documented Github repository
