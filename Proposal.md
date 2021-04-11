@@ -22,24 +22,38 @@ We would conduct the study initially on a specific region (USA) which would serv
 
 [Previous work of colleague on Github by Tailong He at University of Toronto](https://github.com/tailonghe/DLO3)
 
-The Recurrent U-Net model has already proved viable in predicting summertime MDA8 surface ozone concentrations in the US, using meteorological fields from the ERA-interim reanalysis and monthly mean NOx emissions from the Community Emissions Data System (CEDS) inventory as predictors.
+The Recurrent U-Net model has already proved useful in predicting summertime MDA8 surface ozone concentrations in the US, using meteorological fields from the ERA-interim reanalysis and monthly mean NOx emissions from the Community Emissions Data System (CEDS) inventory as predictors.
 
 Note that current DL model is similar but not yet adapted to the task. We would develop a modified version of this model which would be able to work  with the CAMS + openAQ dataset. We would include as the meteorological fields + NOx emissions from CAMS and predict NO2, O3 and PM2.5.
 
-# Rough timeline
+&nbsp;
 
-May: Gather and preprocess openAQ + CAMs data, reducing data size. Probably the longest of the tasks. The goal is to create a single 4D tensor containing relevant data (or figure out how to efficiently read in data during training from local CAMS + openAQ dataset during training.  Use Xarray (and possibly Dask) to handle large amounts of data.
+# Timeline
+| Month | Deliverable |
+| :--- | --- |
+| May |  A cohesive dataset to be fed into a TensorFlow2 deep learning model |
+| June | Trained TensorFlow2 model which is able to correct bias over USA |
+| July | Regional analysis. Further improved model performance. |
+| August | Well documented Github repository | 
 
-Deliverable: a cohesive dataset which is able to be easily fed into a Tensorflow deep learning model
+&nbsp;
 
-June: Modifying existing TensorFlow model architecture for stage one and second stage transfer learning. Train model on CAMS first, followed by training on openAQ. The first task should be simple, with the later being a bit more challenging. 
+# Breakdown
 
-Deliverable: Trained TensorFlow model which is able to correct bias over USA
+### May
+Gather and preprocess openAQ + CAMs data, reducing data size. Probably the longest of the tasks. The goal is to create a single 4D tensor containing relevant data (or figure out how to efficiently read in data during training from local CAMS + openAQ dataset during training.  Use Xarray (and possibly Dask) to handle large amounts of data.
 
-July: Regional analysis. Further improve model performance
+### June
+ Modifying existing TensorFlow model architecture for stage one and second stage transfer learning. Train model on CAMS first, followed by training on openAQ. The first task should be simple, with the later being a bit more challenging. 
 
-Deliverable: Analysis + Results. Why is the model working well/not so well
+### July
+Regional analysis. Further improve model performance
+not so well
 
-August: Make reproducible, open source friendly, documentation and extendable to other regions
+### August
+ Make reproducible, open source friendly, documentation and extendable to other regions
 
-Deliverable : Well documented Github repository
+### Questions
+- Exactly what data are we using?
+- What predictors?
+- 
