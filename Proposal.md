@@ -14,7 +14,7 @@ A (conceptually simpler) one-dimensional approach would be to train the model to
 ![map](map.png)
 *Figure above shows a map of station locations on openAQ* 
 
-## Proposal - Bias-correction  using a Recurrent U-Net 2-stage approach
+## Proposal - Bias-correction using a 2-stage Recurrent U-Net 
 
 We propose a 2-stage transfer learning approach using a Recurrent U-Net Deep Learning model, which will be able to capture the variability of the CAMS model and the bias. We would conduct the study on a specific region (USA) which would serve as a proof of concept, due to the availability of stationary reference-grade data on openAQ (all PM2.5, O3 and NO2). The model could be used for any of the three species. 
 
