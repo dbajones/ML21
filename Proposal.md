@@ -49,11 +49,28 @@ Gather and preprocess openAQ + CAMs data, reducing data size. Probably the longe
  Modifying existing TensorFlow model architecture for stage one and second stage transfer learning. Train model on CAMS first, followed by training on openAQ. The first task should be simple, with the later being a bit more challenging. 
 
 ### July
-Spatial and temporal analysis. When and where is the model performing well/not well? Why is this the case?Further improve model performance.
+- Spatial and temporal analysis
+- When and where is the model performing well/not well?
+- Why is this the case? 
+- Further improve model performance
 
 ### August
  Make reproducible, open source friendly, documentation and extendable to other regions
 
-### Questions
+ &nbsp;
+
+# Data and structure
 - Exactly what data are we using?
-- What predictors? and output?
+  - Stage 1 - Reproducing the CAMS forecast so just CAMS forecast
+  - Stage 2 - CAMS + openAQ dataset (a lot of which happens to be from US EPA AirNow)
+- What predictors? and Output?
+    - Stage 1
+      - Meteorological fields from CAMS + forecast history -> concentration forecast
+      - Loss function to learn forecast
+    - Stage 2
+      - Meteorological fields from CAMS + forecast history + openAQ observations -> concentration forecast
+      - Loss function is difference between forecast and observations
+
+**The bias correction is then the difference between these two stages**
+
+Could possibly leverage more data for stage 1 learning, subject to computational expense.
