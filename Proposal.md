@@ -61,7 +61,7 @@ Gather and preprocess openAQ + CAMs data, reducing data size. Probably the longe
 
 # Data and structure
 - Exactly what data are we using?
-  - Stage 1 - Reproducing the CAMS forecast so just CAMS forecast
+  - Stage 1 - Reproducing the CAMS forecast over the USA i.e. just CAMS forecast
   - Stage 2 - CAMS + openAQ dataset (a lot of which happens to be from US EPA AirNow)
 - What predictors? and Output?
     - Stage 1
